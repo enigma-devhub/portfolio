@@ -1,9 +1,14 @@
 import React from 'react'
 import {motion} from 'framer-motion'
+import { PageInfo } from '../typings';
+import { urlFor } from '../Sanity';
 
-type Props = {}
+type Props = {
+   pageInfo: PageInfo;
+}
 
-function About({}: Props) {
+
+function About({pageInfo}: Props) {
   return (
     <motion.div 
     initial={{
@@ -30,7 +35,8 @@ function About({}: Props) {
         }}
         whileInView={{opacity:1, x:0}}
        // viewport={{once:true}}
-        src="https://cdn.pixabay.com/photo/2017/01/20/13/01/africa-1994846_960_720.jpg" alt=""
+       src={urlFor(pageInfo?.profilePic).url()} alt='gvb'
+
         className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover
         md:rounded-lg md:w-64 md:h-95 xl:w-[500px] xl:h-[500px]"
         
@@ -39,7 +45,7 @@ function About({}: Props) {
             <h4 className="text-4xl font-semibold">Here is a <span className="underline decoration-[#800080]">little </span> background
             </h4>
             <p className='text-base'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis veritatis aliquam quae iure vel fugiat, harum ullam modi perspiciatis vero, sit repudiandae doloribus! Placeat explicabo et dolore molestiae provident aut voluptatum delectus obcaecati aliquid, cumque tempora voluptate numquam similique. Vel fugiat in, corrupti odio culpa similique quam atque fuga quidem! Veritatis nisi suscipit laborum enim accusantium aspernatur itaque illo voluptatibus in! Recusandae perferendis voluptates odio ipsam nihil sit eius aliquid eligendi ratione amet quod magnam beatae, debitis quisquam incidunt nam.</p>
+                {pageInfo?.backgroundInformation}</p>
         </div>
         </motion.div>
   )

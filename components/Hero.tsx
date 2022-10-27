@@ -1,16 +1,21 @@
-import next from 'next';
+
 import React from 'react'
 import { Cursor, useTypewriter } from "react-simple-typewriter"
 import BackgroundCircles from './BackgroundCircles';
 import Link from 'next/link'
-type Props = {}
+import { PageInfo } from '../typings';
+import { urlFor } from '../Sanity';
 
-export default function Hero({ }: Props) {
+type Props = {
+   pageInfo: PageInfo;
+}
+
+export default function Hero({pageInfo}: Props) {
 
     // React simple typewriter
     const [text, count] = useTypewriter({
         words: [
-            "Hello, This Is Emmanuel Onoja",
+            `Hello, This Is ${pageInfo?.name}`,
             "The Internet made me ENIGMA!",
             "I Am A Tech-Writer",
             "I Have A lot Of Interest In Blockchain",
@@ -29,11 +34,11 @@ export default function Hero({ }: Props) {
 
             {/* Circled image */}
             <img className="relative rounded-full h-32 w-32 mx-auto object-cover"
-                src="https://cdn.pixabay.com/photo/2017/11/02/14/26/model-2911329_960_720.jpg" alt="Image of a motherfucker" />
+                src={urlFor(pageInfo?.heroImage).url()} alt="Image of a motherfucker" />
 
             <div className="z-20">
                 {/* typewriter text */}
-                <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px] ">Front-End Engineer</h2>
+                <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px] ">{pageInfo.role}</h2>
                 <h1 className="text-5xl lg:text-5xl font-semibold px-10">
                     <span>{text}</span>
                     <Cursor cursorColor="#800080" />

@@ -1,10 +1,14 @@
 import React from 'react'
 import {SocialIcon} from "react-social-icons"
 import {motion} from "framer-motion"
+import Link from 'next/link'
+import { Social } from '../typings'
 
-type Props = {}
+type Props = {
+  socials: Social[];
+}
 
-export default function Header({}: Props) {
+export default function Header({ socials }: Props) {
   return (
     <header 
     
@@ -31,21 +35,25 @@ export default function Header({}: Props) {
         
         
         className='flex flex-row items-center'>
+
+          {socials.map((social) => (
+            <SocialIcon 
+            key={social._id}
+            url={social.url}
+            fgColor="gray" bgColor="transparent" 
+            
+            />
+
+          )
+              
+            )
+          }
             {/* social icons*/}
-            <SocialIcon url= "https://twitter.com/Soy_Enigma" 
-            fgColor="gray" bgColor="transparent" />
-             <SocialIcon url= "https://medium.com/@enigma13x"
-            fgColor="gray" bgColor="transparent" />
-             <SocialIcon url= "https://www.youtube.com/channel/UCjDojDzEpXEUqnv-NVPbGvw" 
-            fgColor="gray" bgColor="transparent" />
-             <SocialIcon url= "https://www.linkedin.com/in/enigma-eo-22b7a51a7/"
-            fgColor="gray" bgColor="transparent" />
-              <SocialIcon url= "https://www.instagram.com/_enigma1337x/" network="instagram"
-            fgColor="gray" bgColor="transparent" />
-            <SocialIcon url= "https://t.me/Enigma_78"
-            fgColor="gray" bgColor="transparent" />
+
             {/* 29th   minute */}
         </motion.div>
+
+        <Link href="#contact">
         <motion.div
         initial={{
           x: 500,
@@ -64,6 +72,7 @@ export default function Header({}: Props) {
         }}
         
         className="flex flex-row items-center text-gray-300 cursor-pointer">
+
           <SocialIcon className="cursor-pointer" 
           network="email"
           fgColor="gray"
@@ -72,6 +81,7 @@ export default function Header({}: Props) {
           <p className="uppercase hidden md:inline-flex text-sm text-gray-400">Get in touch</p>
           {/* change to uppercase, hide in mobile, make inline flex in middle(md) text size sm(small) */}
         </motion.div>
+        </Link>
     </header>
   )
 }
