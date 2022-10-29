@@ -41,7 +41,7 @@ const Home = ({pageInfo, experiences, projects, socials, skills }: Props) => {
                       snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#800080]/40">
       {/* The snap-y and snap mand. is to give it that elastic effect that drags circles back to the center, (given to the parent div) */}
       <Head>
-        <title>{pageInfo.name} Portfolio</title>
+        <title> Portfolio</title>
       </Head>
       {/* Header */}
       <Header socials={socials}/>
