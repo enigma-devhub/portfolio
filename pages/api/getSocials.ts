@@ -6,7 +6,7 @@ import {Social} from '../../typings';
 
 
 const query = groq`
-*[_type == "social]`
+*[_type == "social"]`
 
 type Data = {
     socials: Social[];

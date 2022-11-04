@@ -6,7 +6,11 @@ import {Project} from '../../typings';
 
 
 const query = groq`
-*[_type == "project]`
+*[ _type == "project"]{
+    ...,
+    technologies[] ->
+  }
+`
 
 type Data = {
     projects: Project[];

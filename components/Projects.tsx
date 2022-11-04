@@ -39,18 +39,22 @@ function Projects({projects}: Props) {
         whileInView={{opacity:1, y:0}}
         viewport={{once:false}}
         
-        className ='h-40 w-40'
+        className ='h-[600px]  w-[700px]'
         src={urlFor(project?.image).url()}  />
 
       <div className='space-y-5 px-0 md:px-10 max-w-6xl'>
         <h4 className='text-4xl font-semibold text-center '>
           
           <span className='underline decoration-[#800080]'>Case study {i + 1} of {projects.length}:</span> {project.title} </h4>
-
-          {/* {project?.technologies.map((technology) => (
-            <img key={technology._id} src={urlFor(technology.image).url()} />
+  <div className='flex items-center space-x-2 justify-center'>
+ {project?.technologies.map((technology) => (
+            <img
+            className='h-10 w-10 rounded-lg'
+            key={technology._id} src={urlFor(technology.image).url()} />
           ))}
-              */}
+             
+  </div> 
+         
           <p className='text-lg text-center md:text-left'> {project?.summary}</p>
       </div>
       </div>
